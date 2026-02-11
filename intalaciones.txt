@@ -1,0 +1,8 @@
+
+#cosas a instalar
+
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+supabase
