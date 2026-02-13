@@ -4,20 +4,84 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 MENSAJES_ERROR = {
-    "multiplicacion1_1_10": {
-        "num1": {
-            "less_than_equal": "El primer parametro debe ser menor o igual a 10",
-            "greater_than_equal": "El primer parametro debe ser mayor o igual a 1",
-            "int_parsing": "El primer parametro debe ser un numero",
-            "missing": "El primer parametro falta"
+    "listar_productos": {
+        "limit": {
+            "greater_than_equal": "El parámetro 'limit' no puede ser negativo ni menor que 1.",
+            "less_than_equal": "El parámetro 'limit' no puede ser mayor a 200.",
+            "int_parsing": "El parámetro 'limit' debe ser un número entero.",
+            "missing": "El parámetro 'limit' es obligatorio.",
         },
-        "num2": {
-            "less_than_equal": "El segundo parametro debe ser menor o igual a 10",
-            "greater_than_equal": "El segundo parametro debe ser mayor o igual a 1",
-            "int_parsing": "El segundo parametro debe ser un numero",
-            "missing": "El segundo parametro falta"
-        }
-    }
+        "offset": {
+            "greater_than_equal": "El parámetro 'offset' no puede ser negativo.",
+            "int_parsing": "El parámetro 'offset' debe ser un número entero.",
+            "missing": "El parámetro 'offset' es obligatorio.",
+        },
+    },
+    "listar_productos_slash": {
+        "limit": {
+            "greater_than_equal": "El parámetro 'limit' no puede ser negativo ni menor que 1.",
+            "less_than_equal": "El parámetro 'limit' no puede ser mayor a 200.",
+            "int_parsing": "El parámetro 'limit' debe ser un número entero.",
+            "missing": "El parámetro 'limit' es obligatorio.",
+        },
+        "offset": {
+            "greater_than_equal": "El parámetro 'offset' no puede ser negativo.",
+            "int_parsing": "El parámetro 'offset' debe ser un número entero.",
+            "missing": "El parámetro 'offset' es obligatorio.",
+        },
+    },
+    "crear_producto": {
+        "quantity": {
+            "greater_than_equal": "El campo 'quantity' no puede ser negativo ni menor que 1.",
+            "int_parsing": "El campo 'quantity' debe ser un número entero.",
+        },
+        "min_stock": {
+            "greater_than_equal": "El campo 'min_stock' no puede ser negativo.",
+            "int_parsing": "El campo 'min_stock' debe ser un número entero.",
+        },
+        "max_stock": {
+            "greater_than_equal": "El campo 'max_stock' no puede ser negativo.",
+            "int_parsing": "El campo 'max_stock' debe ser un número entero.",
+        },
+    },
+    "crear_producto_slash": {
+        "quantity": {
+            "greater_than_equal": "El campo 'quantity' no puede ser negativo ni menor que 1.",
+            "int_parsing": "El campo 'quantity' debe ser un número entero.",
+        },
+        "min_stock": {
+            "greater_than_equal": "El campo 'min_stock' no puede ser negativo.",
+            "int_parsing": "El campo 'min_stock' debe ser un número entero.",
+        },
+        "max_stock": {
+            "greater_than_equal": "El campo 'max_stock' no puede ser negativo.",
+            "int_parsing": "El campo 'max_stock' debe ser un número entero.",
+        },
+    },
+    "actualizar_producto": {
+        "product_id": {
+            "uuid_parsing": "El parámetro 'product_id' debe ser un UUID válido.",
+            "missing": "El parámetro 'product_id' es obligatorio.",
+        },
+        "quantity": {
+            "greater_than_equal": "El campo 'quantity' no puede ser negativo ni menor que 1.",
+            "int_parsing": "El campo 'quantity' debe ser un número entero.",
+        },
+        "min_stock": {
+            "greater_than_equal": "El campo 'min_stock' no puede ser negativo.",
+            "int_parsing": "El campo 'min_stock' debe ser un número entero.",
+        },
+        "max_stock": {
+            "greater_than_equal": "El campo 'max_stock' no puede ser negativo.",
+            "int_parsing": "El campo 'max_stock' debe ser un número entero.",
+        },
+    },
+    "eliminar_producto": {
+        "product_id": {
+            "uuid_parsing": "El parámetro 'product_id' debe ser un UUID válido.",
+            "missing": "El parámetro 'product_id' es obligatorio.",
+        },
+    },
 }
 
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
