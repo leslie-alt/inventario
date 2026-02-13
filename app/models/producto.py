@@ -34,6 +34,8 @@ class ProductUpdate(BaseModel):
     @classmethod
     def validar_fecha_ingreso(cls, value:date) ->date:   #cls es una referencia a la clase ProductCreate, se utiliza para acceder a los atributos y métodos de la clase dentro del validador
         return validar_fecha_ingreso(value)  #llama a la función validar_fecha_ingreso para realizar la validación de la fecha de ingreso
+    
+
 
 
 class productOut(BaseModel):

@@ -24,6 +24,8 @@ class Config(BaseSettings):  #hereda de BaseSettings
         extra= "ignore" #ignora las variables que no estén en el modelo, si no lo pones, te va a dar error si hay una variable en el .env que no esté en el modelo
     )  
 
+config = Config()  #crea una instancia de la clase Config, esto es lo que se va a usar en el resto del código para acceder a las variables de configuración
+
 
 
 
